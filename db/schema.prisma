@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -63,3 +63,83 @@ model Token {
 // enum TokenType {
 //   RESET_PASSWORD
 // }
+
+model Project {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Producto {
+  id                  Int      @id @default(autoincrement())
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  titulo              String
+  detalle             String?
+  idCategoriaProducto Int?
+}
+
+model PlazosEntrega {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  descripcion String
+}
+
+model Institucione {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  descripcion String
+  email       String?
+  cuit        String?
+  telefono    String?
+  domicilio   String?
+  cufe        String?
+  localidad   String?
+}
+
+model Cliente {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  nombre    String
+  email     String?
+  cuit      String?
+  telefono  String?
+  celular   String?
+  domicilio String?
+  iva       String?
+  localidad String?
+}
+
+model CategoriasProducto {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  descripcion String
+}
+
+model CategoriasPresupuesto {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  descripcion String
+}
+
+model Medico {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  nombre    String?
+  domicilio String?
+}
+
+model Medic {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  nombre    String?
+  domicilio String?
+  email     String
+}

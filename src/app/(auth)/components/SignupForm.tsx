@@ -5,6 +5,8 @@ import signup from "../mutations/signup"
 import { Signup } from "../validations"
 import { useMutation } from "@blitzjs/rpc"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
+import Link from "next/link"
 
 type SignupFormProps = {
   onSuccess?: () => void
@@ -16,30 +18,44 @@ export const SignupForm = (props: SignupFormProps) => {
 
   return (
     <div>
-      <h1>Create an Account</h1>
-
-      <Form
-        submitText="Create Account"
-        schema={Signup}
-        initialValues={{ email: "", password: "" }}
-        onSubmit={async (values) => {
-          try {
-            await signupMutation(values)
-            router.refresh()
-            router.push("/")
-          } catch (error: any) {
-            if (error.code === "P2002" && error.meta?.target?.includes("email")) {
-              // This error comes from Prisma
-              return { email: "This email is already being used" }
-            } else {
-              return { [FORM_ERROR]: error.toString() }
-            }
-          }
-        }}
-      >
-        <LabeledTextField name="email" label="Email" placeholder="Email" />
-        <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
-      </Form>
+      <div className="flex min-h-full flex-col justify-center py-6 lg:px-8">
+        <div className="align-middle">
+          <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-sm border-2 p-9 rounded-md border-gray ">
+            <Form
+              submitText="Crear Usuario"
+              schema={Signup}
+              initialValues={{ email: "", password: "" }}
+              onSubmit={async (values) => {
+                try {
+                  await signupMutation(values)
+                  router.refresh()
+                  router.push("/")
+                } catch (error: any) {
+                  if (error.code === "P2002" && error.meta?.target?.includes("email")) {
+                    // This error comes from Prisma
+                    return { email: "Este Correo ya existe, por favor cree otro." }
+                  } else {
+                    return { [FORM_ERROR]: error.toString() }
+                  }
+                }
+              }}
+            >
+              <LabeledTextField name="email" label="Email" placeholder="Email" />
+              <LabeledTextField
+                name="password"
+                label="Contraseña"
+                placeholder="Password"
+                type="password"
+              />
+            </Form>
+            <div>
+              <button className="mt-2 flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
+                <Link href="/login">Regresar</Link>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

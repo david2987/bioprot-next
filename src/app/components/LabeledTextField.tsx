@@ -18,9 +18,15 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
 
     return (
       <div {...outerProps}>
-        <label>
+        <label className="block text-sm font-medium leading-6 text-gray-900">
           {label}
-          <input {...input} disabled={isSubmitting} {...props} ref={ref} />
+          <input
+            {...input}
+            disabled={isSubmitting}
+            {...props}
+            ref={ref}
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
         </label>
 
         <ErrorMessage name={name}>
@@ -31,14 +37,21 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
           )}
         </ErrorMessage>
 
-        <style jsx>{`
-          label {
+        <style jsx>{``}</style>
+      </div>
+    )
+  }
+)
+
+/*
+  label {
             display: flex;
             flex-direction: column;
             align-items: start;
             font-size: 1rem;
           }
-          input {
+
+ input {
             font-size: 1rem;
             padding: 0.25rem 0.5rem;
             border-radius: 3px;
@@ -46,11 +59,7 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
             appearance: none;
             margin-top: 0.5rem;
           }
-        `}</style>
-      </div>
-    )
-  }
-)
+*/
 
 LabeledTextField.displayName = "LabeledTextField"
 
