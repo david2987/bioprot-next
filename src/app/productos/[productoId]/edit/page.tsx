@@ -11,7 +11,7 @@ type EditProductoPageProps = {
 export async function generateMetadata({ params }: EditProductoPageProps): Promise<Metadata> {
   const Producto = await invoke(getProducto, { id: Number(params.productoId) })
   return {
-    title: `Edit Producto ${Producto.id} - ${Producto.name}`,
+    title: `Edit Producto ${Producto.id} - ${Producto.titulo}`,
   }
 }
 

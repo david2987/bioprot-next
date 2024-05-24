@@ -18,7 +18,7 @@ export const CategoriasProducto = ({ categoriasProductoId }: { categoriasProduct
         <h1>Project {categoriasProducto.id}</h1>
         <pre>{JSON.stringify(categoriasProducto, null, 2)}</pre>
 
-        <Link href={`/categoriasProductos/${categoriasProducto.id}/edit`}>Edit</Link>
+        <Link href={`/categorias-productos/${categoriasProducto.id}/edit`}>Edit</Link>
 
         <button
           type="button"
@@ -27,7 +27,7 @@ export const CategoriasProducto = ({ categoriasProductoId }: { categoriasProduct
               await deleteCategoriasProductoMutation({
                 id: categoriasProducto.id,
               })
-              router.push("/categoriasProductos")
+              router.push("/categorias-productos")
             }
           }}
           style={{ marginLeft: "0.5rem" }}

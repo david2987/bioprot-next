@@ -15,7 +15,7 @@ export function New__ModelName() {
       onSubmit={async (values) => {
         try {
           const categoriasPresupuesto = await createCategoriasPresupuestoMutation(values)
-          router.push(`/categoriasPresupuestos/${categoriasPresupuesto.id}`)
+          router.push(`/categorias-presupuestos/${categoriasPresupuesto.id}`)
         } catch (error: any) {
           console.error(error)
           return {

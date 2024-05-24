@@ -36,7 +36,7 @@ export const MedicsList = () => {
       <ul>
         {medics.map((medic) => (
           <li key={medic.id}>
-            <Link href={`/medics/${medic.id}`}>{medic.name}</Link>
+            <Link href={`/medics/${medic.id}`}>{medic.nombre}</Link>
           </li>
         ))}
       </ul>

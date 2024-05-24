@@ -36,7 +36,7 @@ export const InstitucionesList = () => {
       <ul>
         {instituciones.map((institucione) => (
           <li key={institucione.id}>
-            <Link href={`/instituciones/${institucione.id}`}>{institucione.name}</Link>
+            <Link href={`/instituciones/${institucione.id}`}>{institucione.descripcion}</Link>
           </li>
         ))}
       </ul>

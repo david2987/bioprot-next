@@ -15,7 +15,7 @@ export async function generateMetadata({
     id: Number(params.categoriasPresupuestoId),
   })
   return {
-    title: `Edit CategoriasPresupuesto ${CategoriasPresupuesto.id} - ${CategoriasPresupuesto.name}`,
+    title: `Edit CategoriasPresupuesto ${CategoriasPresupuesto.id} - ${CategoriasPresupuesto.descripcion}`,
   }
 }
 

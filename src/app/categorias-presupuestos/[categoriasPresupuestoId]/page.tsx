@@ -12,7 +12,7 @@ export async function generateMetadata({
     id: Number(params.categoriasPresupuestoId),
   })
   return {
-    title: `CategoriasPresupuesto ${CategoriasPresupuesto.id} - ${CategoriasPresupuesto.name}`,
+    title: `CategoriasPresupuesto ${CategoriasPresupuesto.id} - ${CategoriasPresupuesto.descripcion}`,
   }
 }
 
@@ -23,9 +23,7 @@ type CategoriasPresupuestoPageProps = {
 export default async function Page({ params }: CategoriasPresupuestoPageProps) {
   return (
     <div>
-      <p>
-        <Link href={"/categoriasPresupuestos"}>CategoriasPresupuestos</Link>
-      </p>
+      <p>{/* <Link href={"/categoriasPresupuestos"}>CategoriasPresupuestos</Link> */}</p>
       <Suspense fallback={<div>Loading...</div>}>
         <CategoriasPresupuesto categoriasPresupuestoId={Number(params.categoriasPresupuestoId)} />
       </Suspense>

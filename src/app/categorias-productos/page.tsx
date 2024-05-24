@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <div>
       <p>
-        <Link href={"/categoriasProductos/new"}>Create CategoriasProducto</Link>
+        <Link href={"/categorias-productos/new"}>Create CategoriasProducto</Link>
       </p>
       <Suspense fallback={<div>Loading...</div>}>
         <CategoriasProductosList />

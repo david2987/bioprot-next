@@ -8,7 +8,7 @@ import { Cliente } from "../components/Cliente"
 export async function generateMetadata({ params }: ClientePageProps): Promise<Metadata> {
   const Cliente = await invoke(getCliente, { id: Number(params.clienteId) })
   return {
-    title: `Cliente ${Cliente.id} - ${Cliente.name}`,
+    title: `Cliente ${Cliente.id} - ${Cliente.nombre}`,
   }
 }
 

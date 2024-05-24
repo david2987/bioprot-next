@@ -36,8 +36,8 @@ export const CategoriasPresupuestosList = () => {
       <ul>
         {categoriasPresupuestos.map((categoriasPresupuesto) => (
           <li key={categoriasPresupuesto.id}>
-            <Link href={`/categoriasPresupuestos/${categoriasPresupuesto.id}`}>
-              {categoriasPresupuesto.name}
+            <Link href={`/categorias-presupuestos/${categoriasPresupuesto.id}`}>
+              {categoriasPresupuesto.descripcion}
             </Link>
           </li>
         ))}

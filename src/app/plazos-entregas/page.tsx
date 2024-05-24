@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <div>
       <p>
-        <Link href={"/plazosEntregas/new"}>Create PlazosEntrega</Link>
+        <Link href={"/plazos-entregas/new"}>Create PlazosEntrega</Link>
       </p>
       <Suspense fallback={<div>Loading...</div>}>
         <PlazosEntregasList />

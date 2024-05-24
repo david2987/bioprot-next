@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: EditPlazosEntregaPageProps): 
     id: Number(params.plazosEntregaId),
   })
   return {
-    title: `Edit PlazosEntrega ${PlazosEntrega.id} - ${PlazosEntrega.name}`,
+    title: `Edit PlazosEntrega ${PlazosEntrega.id} - ${PlazosEntrega.descripcion}`,
   }
 }
 

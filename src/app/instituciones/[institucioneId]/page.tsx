@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: InstitucionePageProps): Promi
     id: Number(params.institucioneId),
   })
   return {
-    title: `Institucione ${Institucione.id} - ${Institucione.name}`,
+    title: `Institucione ${Institucione.id} - ${Institucione.descripcion}`,
   }
 }
 

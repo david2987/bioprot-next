@@ -17,6 +17,7 @@ import {
   User2Icon,
   Box,
 } from "lucide-react"
+import LinkDeSidebar from "./LinkDeSidebar"
 
 const SideBar: BlitzPage = () => {
   const session = useSession({ suspense: false })
@@ -41,9 +42,11 @@ const SideBar: BlitzPage = () => {
       <div className="relative flex  flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[12rem] p-4 shadow-xl shadow-blue-gray-900/5">
         <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
           {menus.map((menu) => {
+            const enlace = menu.link
             return (
               <>
-                <Link href={menu.link.toString()}>
+                <LinkDeSidebar key={menu.link} texto={menu.nombre} href={menu.link}></LinkDeSidebar>
+                {/* <Link href={enlace}>
                   <div
                     role="button"
                     className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
@@ -51,7 +54,7 @@ const SideBar: BlitzPage = () => {
                     <div className="grid place-items-center mr-4">{menu.icon}</div>
                     {menu.nombre}
                   </div>
-                </Link>
+                </Link> */}
               </>
             )
           })}

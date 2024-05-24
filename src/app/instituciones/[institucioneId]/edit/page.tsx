@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: EditInstitucionePageProps): P
     id: Number(params.institucioneId),
   })
   return {
-    title: `Edit Institucione ${Institucione.id} - ${Institucione.name}`,
+    title: `Edit Institucione ${Institucione.id} - ${Institucione.descripcion}`,
   }
 }
 

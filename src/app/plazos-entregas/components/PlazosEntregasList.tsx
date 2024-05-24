@@ -36,7 +36,7 @@ export const PlazosEntregasList = () => {
       <ul>
         {plazosEntregas.map((plazosEntrega) => (
           <li key={plazosEntrega.id}>
-            <Link href={`/plazosEntregas/${plazosEntrega.id}`}>{plazosEntrega.name}</Link>
+            <Link href={`/plazos-entregas/${plazosEntrega.id}`}>{plazosEntrega.descripcion}</Link>
           </li>
         ))}
       </ul>

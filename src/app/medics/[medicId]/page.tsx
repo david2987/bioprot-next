@@ -8,7 +8,7 @@ import { Medic } from "../components/Medic"
 export async function generateMetadata({ params }: MedicPageProps): Promise<Metadata> {
   const Medic = await invoke(getMedic, { id: Number(params.medicId) })
   return {
-    title: `Medic ${Medic.id} - ${Medic.name}`,
+    title: `Medic ${Medic.id} - ${Medic.nombre}`,
   }
 }
 

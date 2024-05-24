@@ -11,7 +11,7 @@ type EditMedicPageProps = {
 export async function generateMetadata({ params }: EditMedicPageProps): Promise<Metadata> {
   const Medic = await invoke(getMedic, { id: Number(params.medicId) })
   return {
-    title: `Edit Medic ${Medic.id} - ${Medic.name}`,
+    title: `Edit Medic ${Medic.id} - ${Medic.nombre}`,
   }
 }
 

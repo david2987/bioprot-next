@@ -16,14 +16,14 @@ export const PlazosEntrega = ({ plazosEntregaId }: { plazosEntregaId: number }) 
         <h1>Project {plazosEntrega.id}</h1>
         <pre>{JSON.stringify(plazosEntrega, null, 2)}</pre>
 
-        <Link href={`/plazosEntregas/${plazosEntrega.id}/edit`}>Edit</Link>
+        <Link href={`/plazos-entregas/${plazosEntrega.id}/edit`}>Edit</Link>
 
         <button
           type="button"
           onClick={async () => {
             if (window.confirm("This will be deleted")) {
               await deletePlazosEntregaMutation({ id: plazosEntrega.id })
-              router.push("/plazosEntregas")
+              router.push("/plazos-entregas")
             }
           }}
           style={{ marginLeft: "0.5rem" }}
