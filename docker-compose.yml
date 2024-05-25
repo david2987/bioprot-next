@@ -20,3 +20,9 @@ services:
       - 8080:8080
     networks:
       - db
+
+networks:
+  rmq:
+    name: rmq
+  db:
+    name: db
