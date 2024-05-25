@@ -8,6 +8,16 @@ services:
     volumes:
       - ~/apps/postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=S3cret
+      - POSTGRES_PASSWORD=B10Pr0t!3645
       - POSTGRES_USER=bioprot
       - POSTGRES_DB=bioprotNext
+    networks:
+      - db
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - db

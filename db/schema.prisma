@@ -141,5 +141,4 @@ model Medic {
   updatedAt DateTime @updatedAt
   nombre    String?
   domicilio String?
-  email     String
 }
