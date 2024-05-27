@@ -19,6 +19,7 @@ import {
   Home,
 } from "lucide-react"
 import LinkDeSidebar from "./LinkDeSidebar"
+import { v4 as uuidv4 } from "uuid"
 
 const SideBar: BlitzPage = () => {
   const session = useSession({ suspense: false })
@@ -40,27 +41,32 @@ const SideBar: BlitzPage = () => {
 
   return (
     <>
-      <div className="relative flex  flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[16rem] p-4 shadow-xl shadow-blue-gray-900/5">
-        <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
-          {menus.map((menu) => {
-            const enlace = menu.link
-            return (
-              <>
-                <ul className="list-none" key={enlace}>
-                  <LinkDeSidebar
-                    key={menu.link}
-                    texto={menu.nombre}
-                    href={menu.link}
-                  ></LinkDeSidebar>
+      <div
+        className="relative flex  flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[16rem] p-4 shadow-xl shadow-blue-gray-900/5"
+        key={uuidv4()}
+      >
+        <nav
+          className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700"
+          key={uuidv4()}
+        >
+          {menus &&
+            menus.map((menu) => {
+              const enlace = menu.link
+              return (
+                <ul className="list-none" key={uuidv4()}>
+                  <LinkDeSidebar key={uuidv4()} texto={menu.nombre} href={enlace}></LinkDeSidebar>
                 </ul>
-              </>
-            )
-          })}
+              )
+            })}
           <div
             role="button"
             className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+            key={uuidv4()}
           >
-            <div className="grid place-items-center mr-4 bg-red-500 p-1 rounded-md text-white">
+            <div
+              className="grid place-items-center mr-4 bg-red-500 p-1 rounded-md text-white"
+              key={uuidv4()}
+            >
               {session.userId && (
                 <>
                   <button

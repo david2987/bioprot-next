@@ -26,6 +26,7 @@ import {
   ReceiptTextIcon,
   PackageOpenIcon,
 } from "lucide-react"
+import { v4 as uuidv4 } from "uuid"
 
 interface LinkDeSidebarProps {
   // iconoSVG: ReactNode;
@@ -86,8 +87,8 @@ export default function LinkDeSidebar({
   ...props
 }: LinkDeSidebarProps) {
   return (
-    <li {...props} onClick={onClick} className="hover:bg-muted/50" key={1}>
-      <a href={href} className="flex items-center p-2 space-x-3 rounded-md" key={1}>
+    <li {...props} onClick={onClick} className="hover:bg-muted/50" key={uuidv4()}>
+      <a href={href} className="flex items-center p-2 space-x-3 rounded-md" key={uuidv4()}>
         {iconoSideBar(texto)}
         <span>{texto}</span>
       </a>

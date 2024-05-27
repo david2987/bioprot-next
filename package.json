@@ -37,6 +37,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "secure-password": "4.0.0",
+    "uuid": "9.0.1",
     "zod": "3.22.4"
   },
   "devDependencies": {
@@ -47,6 +48,7 @@
     "@types/node": "18.11.9",
     "@types/preview-email": "2.0.1",
     "@types/react": "18.0.25",
+    "@types/uuid": "9.0.8",
     "@typescript-eslint/eslint-plugin": "5.42.1",
     "@vitejs/plugin-react": "2.2.0",
     "ajv": "^7.0.0",

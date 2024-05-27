@@ -9,6 +9,7 @@ import { Route } from "next"
 import { ArrowLeft, ArrowRight, Edit, Search, Trash2 } from "lucide-react"
 import { HeaderTable } from "../../components/RowsTable"
 import deleteCliente from "../mutations/deleteCliente"
+import { v4 as uuidv4 } from "uuid"
 
 const ITEMS_PER_PAGE = 3
 
@@ -74,20 +75,18 @@ export const ClientesList = () => {
         <Search></Search>
       </div>
       {clientes.length == 0 ? (
-        <>
-          <table className="min-w-3/4 divide-y divide-gray-200 dark:divide-neutral-700">
-            <thead className="bg-gray-700">
-              <tr>{HeaderTable({ headers: tableHader })}</tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
-              <tr>
-                <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
-                  No Hay Registro.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </>
+        <table className="min-w-3/4 divide-y divide-gray-200 dark:divide-neutral-700">
+          <thead className="bg-gray-700">
+            <tr>{HeaderTable({ headers: tableHader })}</tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
+            <tr key={uuidv4()}>
+              <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                No Hay Registro.
+              </td>
+            </tr>
+          </tbody>
+        </table>
       ) : (
         ""
       )}
@@ -101,7 +100,7 @@ export const ClientesList = () => {
             <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
               {clientes &&
                 clientes.map((cliente) => (
-                  <tr>
+                  <tr key={uuidv4()}>
                     <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
                       {cliente.nombre}
                     </td>
