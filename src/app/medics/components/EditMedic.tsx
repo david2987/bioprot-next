@@ -21,11 +21,11 @@ export const EditMedic = ({ medicId }: { medicId: number }) => {
   return (
     <>
       <div>
-        <h1>Edit Medic {medic.id}</h1>
-        <pre>{JSON.stringify(medic, null, 2)}</pre>
+        <div className="text-2xl mb-2 border-b-2 mt-2">Editar Medico </div>
+
         <Suspense fallback={<div>Loading...</div>}>
           <MedicForm
-            submitText="Update Medic"
+            submitText="Actualizar Medico"
             schema={UpdateMedicSchema}
             initialValues={medic}
             onSubmit={async (values) => {
@@ -36,6 +36,7 @@ export const EditMedic = ({ medicId }: { medicId: number }) => {
                 })
                 await setQueryData(updated)
                 router.refresh()
+                router.push("/medics")
               } catch (error: any) {
                 console.error(error)
                 return {

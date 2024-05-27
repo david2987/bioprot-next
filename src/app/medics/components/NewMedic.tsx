@@ -10,12 +10,12 @@ export function New__ModelName() {
   const router = useRouter()
   return (
     <MedicForm
-      submitText="Create Medic"
+      submitText="Crear Medico"
       schema={CreateMedicSchema}
       onSubmit={async (values) => {
         try {
           const medic = await createMedicMutation(values)
-          router.push(`/medics/${medic.id}`)
+          router.push(`/medics`)
         } catch (error: any) {
           console.error(error)
           return {

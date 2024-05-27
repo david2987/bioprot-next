@@ -9,10 +9,12 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div>
-      <h1>Create New Project</h1>
+    <div className="mt-4">
+      <div className="text-2xl mb-2 border-b-2">Crear Medico</div>
       <Suspense fallback={<div>Loading...</div>}>
-        <New__ModelName />
+        <div className="container">
+          <New__ModelName />
+        </div>
       </Suspense>
     </div>
   )
