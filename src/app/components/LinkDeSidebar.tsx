@@ -25,6 +25,7 @@ import {
   PackageSearch,
   ReceiptTextIcon,
   PackageOpenIcon,
+  TimerIcon,
 } from "lucide-react"
 import { v4 as uuidv4 } from "uuid"
 
@@ -53,8 +54,8 @@ const iconoSideBar = (texto: string) => {
     case "Instituciones":
       return <Building />
 
-    case "Chat":
-      return <MessageCircle />
+    case "Plazo de Entrega":
+      return <TimerIcon />
 
     case "Regiones":
       return <MapPinnedIcon />

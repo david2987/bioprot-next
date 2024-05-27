@@ -16,6 +16,7 @@ import {
   Shapes,
   User2Icon,
   Box,
+  TimerIcon,
   Home,
 } from "lucide-react"
 import LinkDeSidebar from "./LinkDeSidebar"
@@ -37,6 +38,7 @@ const SideBar: BlitzPage = () => {
     { nombre: "Productos", link: "/productos", icon: <Package></Package> },
     { nombre: "Categorias Presupuesto", link: "/categorias-presupuestos", icon: <Shapes></Shapes> },
     { nombre: "Categorias Producto", link: "/categorias-productos", icon: <Box></Box> },
+    { nombre: "Plazo de Entrega", link: "/plazos-entregas", icon: <TimerIcon></TimerIcon> },
   ]
 
   return (

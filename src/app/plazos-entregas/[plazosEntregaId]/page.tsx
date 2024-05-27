@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: PlazosEntregaPageProps): Prom
     id: Number(params.plazosEntregaId),
   })
   return {
-    title: `PlazosEntrega ${PlazosEntrega.id} - ${PlazosEntrega.descripcion}`,
+    title: `Plazo de  Entrega`,
   }
 }
 
@@ -22,7 +22,7 @@ export default async function Page({ params }: PlazosEntregaPageProps) {
   return (
     <div>
       <p>
-        <Link href={"/plazos-entregas"}>PlazosEntregas</Link>
+        <Link href={"/plazos-entregas"}>Plazo de Entrega</Link>
       </p>
       <Suspense fallback={<div>Loading...</div>}>
         <PlazosEntrega plazosEntregaId={Number(params.plazosEntregaId)} />

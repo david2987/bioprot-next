@@ -8,7 +8,7 @@ import { Producto } from "../components/Producto"
 export async function generateMetadata({ params }: ProductoPageProps): Promise<Metadata> {
   const Producto = await invoke(getProducto, { id: Number(params.productoId) })
   return {
-    title: `Producto ${Producto.id} - ${Producto.titulo}`,
+    title: `Producto`,
   }
 }
 

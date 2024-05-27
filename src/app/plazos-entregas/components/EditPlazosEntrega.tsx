@@ -21,11 +21,11 @@ export const EditPlazosEntrega = ({ plazosEntregaId }: { plazosEntregaId: number
   return (
     <>
       <div>
-        <h1>Edit PlazosEntrega {plazosEntrega.id}</h1>
-        <pre>{JSON.stringify(plazosEntrega, null, 2)}</pre>
+        <div className="text-2xl mb-2 border-b-2 mt-2">Editar Plazo Entrega </div>
+
         <Suspense fallback={<div>Loading...</div>}>
           <PlazosEntregaForm
-            submitText="Update PlazosEntrega"
+            submitText="Actualizar PlazosEntrega"
             schema={UpdatePlazosEntregaSchema}
             initialValues={plazosEntrega}
             onSubmit={async (values) => {
@@ -36,6 +36,7 @@ export const EditPlazosEntrega = ({ plazosEntregaId }: { plazosEntregaId: number
                 })
                 await setQueryData(updated)
                 router.refresh()
+                router.push("/plazos-entregas")
               } catch (error: any) {
                 console.error(error)
                 return {

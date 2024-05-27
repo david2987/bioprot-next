@@ -21,11 +21,12 @@ export const EditProducto = ({ productoId }: { productoId: number }) => {
   return (
     <>
       <div>
-        <h1>Edit Producto {producto.id}</h1>
-        <pre>{JSON.stringify(producto, null, 2)}</pre>
+        {/* <h1>Edit Producto {producto.id}</h1> */}
+        {/* <pre>{JSON.stringify(producto, null, 2)}</pre> */}
+        <div className="text-2xl mb-2 border-b-2 mt-2">Editar Producto </div>
         <Suspense fallback={<div>Loading...</div>}>
           <ProductoForm
-            submitText="Update Producto"
+            submitText="Actualizar Producto"
             schema={UpdateProductoSchema}
             initialValues={producto}
             onSubmit={async (values) => {
@@ -36,6 +37,7 @@ export const EditProducto = ({ productoId }: { productoId: number }) => {
                 })
                 await setQueryData(updated)
                 router.refresh()
+                router.push("/productos")
               } catch (error: any) {
                 console.error(error)
                 return {
