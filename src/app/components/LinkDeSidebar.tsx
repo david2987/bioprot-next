@@ -19,6 +19,12 @@ import {
   UserCircle,
   Users,
   Menu,
+  Building,
+  Receipt,
+  UserRoundSearch,
+  PackageSearch,
+  ReceiptTextIcon,
+  PackageOpenIcon,
 } from "lucide-react"
 
 interface LinkDeSidebarProps {
@@ -32,19 +38,19 @@ interface LinkDeSidebarProps {
 const iconoSideBar = (texto: string) => {
   switch (texto) {
     case "Presupuesto":
-      return <Home />
+      return <Receipt />
 
     case "Salir":
       return <LogOut />
 
     case "Clientes":
-      return <Car />
+      return <Users />
 
     case "Medicos":
-      return <Store />
+      return <UserRoundSearch />
 
-    case "Instituciones ":
-      return <BaggageClaimIcon />
+    case "Instituciones":
+      return <Building />
 
     case "Chat":
       return <MessageCircle />
@@ -59,10 +65,10 @@ const iconoSideBar = (texto: string) => {
       return <HandIcon />
 
     case "Categorias Presupuesto":
-      return <GaugeIcon />
+      return <ReceiptTextIcon />
 
     case "Categorias Producto":
-      return <Users />
+      return <PackageOpenIcon />
 
     case "Menu":
       return <Menu />
@@ -80,11 +86,11 @@ export default function LinkDeSidebar({
   ...props
 }: LinkDeSidebarProps) {
   return (
-    <li {...props} onClick={onClick} className="hover:bg-muted/50">
-      <Link href={{ href }} prefetch={false} className="flex items-center p-2 space-x-3 rounded-md">
+    <li {...props} onClick={onClick} className="hover:bg-muted/50" key={1}>
+      <a href={href} className="flex items-center p-2 space-x-3 rounded-md" key={1}>
         {iconoSideBar(texto)}
         <span>{texto}</span>
-      </Link>
+      </a>
     </li>
   )
 }

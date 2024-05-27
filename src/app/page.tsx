@@ -4,7 +4,6 @@ import { redirect } from "next/navigation"
 
 export default async function Home() {
   const currentUser = await invoke(getCurrentUser, null)
-  console.log(currentUser)
 
   //  if(currentUser) redirect('/dashboard')
   if (!currentUser) redirect("/login")

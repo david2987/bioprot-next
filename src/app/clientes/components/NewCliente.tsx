@@ -9,20 +9,22 @@ export function New__ModelName() {
   const [createClienteMutation] = useMutation(createCliente)
   const router = useRouter()
   return (
-    <ClienteForm
-      submitText="Crear Cliente"
-      schema={CreateClienteSchema}
-      onSubmit={async (values) => {
-        try {
-          const cliente = await createClienteMutation(values)
-          router.push(`/clientes/${cliente.id}`)
-        } catch (error: any) {
-          console.error(error)
-          return {
-            [FORM_ERROR]: error.toString(),
+    <>
+      <ClienteForm
+        submitText="Crear Cliente"
+        schema={CreateClienteSchema}
+        onSubmit={async (values) => {
+          try {
+            const cliente = await createClienteMutation(values)
+            router.push(`/clientes`)
+          } catch (error: any) {
+            console.error(error)
+            return {
+              [FORM_ERROR]: error.toString(),
+            }
           }
-        }
-      }}
-    />
+        }}
+      />
+    </>
   )
 }

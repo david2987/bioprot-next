@@ -21,11 +21,11 @@ export const EditCliente = ({ clienteId }: { clienteId: number }) => {
   return (
     <>
       <div>
-        <h1>Edit Cliente {cliente.id}</h1>
-        <pre>{JSON.stringify(cliente, null, 2)}</pre>
+        <div className="text-2xl mb-2 border-b-2 mt-2">Editar Cliente </div>
+        {/* <pre>{JSON.stringify(cliente, null, 2)}</pre> */}
         <Suspense fallback={<div>Loading...</div>}>
           <ClienteForm
-            submitText="Update Cliente"
+            submitText="Actualizar Cliente"
             schema={UpdateClienteSchema}
             initialValues={cliente}
             onSubmit={async (values) => {
@@ -36,6 +36,7 @@ export const EditCliente = ({ clienteId }: { clienteId: number }) => {
                 })
                 await setQueryData(updated)
                 router.refresh()
+                router.push("/clientes")
               } catch (error: any) {
                 console.error(error)
                 return {

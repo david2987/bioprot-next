@@ -1,23 +1,30 @@
 "use client"
-import { usePaginatedQuery } from "@blitzjs/rpc"
+import { usePaginatedQuery, useMutation } from "@blitzjs/rpc"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import getClientes from "../queries/getClientes"
 import { useSearchParams } from "next/navigation"
 import { usePathname } from "next/navigation"
 import { Route } from "next"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowLeft, ArrowRight, Edit, Search, Trash2 } from "lucide-react"
+import { HeaderTable } from "../../components/RowsTable"
+import deleteCliente from "../mutations/deleteCliente"
 
-const ITEMS_PER_PAGE = 100
+const ITEMS_PER_PAGE = 3
 
 export const ClientesList = () => {
   const searchparams = useSearchParams()!
   const page = Number(searchparams.get("page")) || 0
+  const nombreFiltrer = searchparams.get("nombre") ? String(searchparams.get("nombre")) : undefined
+  const [deleteClienteMutation] = useMutation(deleteCliente)
+
   const [{ clientes, hasMore }] = usePaginatedQuery(getClientes, {
     orderBy: { id: "asc" },
     skip: ITEMS_PER_PAGE * page,
     take: ITEMS_PER_PAGE,
+    ...(nombreFiltrer ? { where: { nombre: { contains: nombreFiltrer } } } : ""),
   })
+
   const router = useRouter()
   const pathname = usePathname()
 
@@ -32,52 +39,51 @@ export const ClientesList = () => {
     router.push((pathname + "?" + params.toString()) as Route)
   }
 
+  const filtrarDatos = (nombre: string) => {
+    const params = new URLSearchParams(searchparams)
+    params.set("nombre", nombre)
+    router.push((pathname + "?" + params.toString()) as Route)
+  }
+
+  type HeaderTable = { titulo: string }[]
+
+  const tableHader: HeaderTable = [
+    { titulo: "Nombre" },
+    { titulo: "Email" },
+    { titulo: "CUIT" },
+    { titulo: "Localidad" },
+    { titulo: "Teléfono" },
+    { titulo: "Celular" },
+    { titulo: "IVA" },
+    { titulo: "" },
+    { titulo: "" },
+  ]
+
   return (
     <div>
-      <ul>
-        {clientes.map((cliente) => (
-          <li key={cliente.id}>
-            <Link href={`/clientes/${cliente.id}`}>{cliente.nombre}</Link>
-          </li>
-        ))}
-      </ul>
+      <div className="flex mb-3 gap-3">
+        <div>
+          <label>Nombre: </label>
+          <input
+            className="border-solid border-2 border-slate-500 rounded-md"
+            type="text"
+            placeholder="Nombre"
+            onChange={(e) => filtrarDatos(e.target.value)}
+          ></input>
+        </div>
+        <Search></Search>
+      </div>
       {clientes.length == 0 ? (
         <>
           <table className="min-w-3/4 divide-y divide-gray-200 dark:divide-neutral-700">
             <thead className="bg-gray-700">
-              <tr>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-start text-xs font-medium text-white uppercase "
-                >
-                  Name
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-start text-xs font-medium text-white uppercase "
-                >
-                  Age
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-start text-xs font-medium text-white uppercase "
-                >
-                  Address
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-end text-xs font-medium text-white uppercase "
-                >
-                  Action
-                </th>
-              </tr>
+              <tr>{HeaderTable({ headers: tableHader })}</tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
               <tr>
-                <td className="text-bolder">No Hay Registro.</td>
-                {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium  ">John Brown</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm  ">45</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm  ">New York No. 1 Lake Park</td>               */}
+                <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                  No Hay Registro.
+                </td>
               </tr>
             </tbody>
           </table>
@@ -88,6 +94,61 @@ export const ClientesList = () => {
 
       {clientes.length > 0 ? (
         <>
+          <table className="min-w-3/4 divide-y divide-gray-200 dark:divide-neutral-700">
+            <thead className="bg-gray-700">
+              <tr>{HeaderTable({ headers: tableHader })}</tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
+              {clientes &&
+                clientes.map((cliente) => (
+                  <tr>
+                    <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                      {cliente.nombre}
+                    </td>
+                    <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                      {cliente.email}
+                    </td>
+                    <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                      {cliente.cuit}
+                    </td>
+                    <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                      {cliente.localidad}
+                    </td>
+                    <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                      {cliente.telefono}
+                    </td>
+                    <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                      {cliente.celular}
+                    </td>
+                    <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                      {cliente.iva}
+                    </td>
+                    <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                      <a href={`/clientes/${cliente.id}/edit`}>
+                        <Edit></Edit>
+                      </a>
+                    </td>
+                    <td className="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          if (
+                            window.confirm("Este registro se va a Eliminar. Usted desea continuar?")
+                          ) {
+                            await deleteClienteMutation({ id: cliente.id })
+                            router.push("/clientes")
+                          }
+                        }}
+                        style={{ marginLeft: "0.5rem" }}
+                      >
+                        <Trash2></Trash2>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+
           <button
             className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             disabled={page === 0}

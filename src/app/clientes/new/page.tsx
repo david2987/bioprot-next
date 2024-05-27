@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div>
-      <h1>Crear Cliente</h1>
+    <div className="mt-4">
+      <div className="text-2xl mb-2 border-b-2">Crear Cliente</div>
       <Suspense fallback={<div>Loading...</div>}>
         <div className="container">
           <New__ModelName />
