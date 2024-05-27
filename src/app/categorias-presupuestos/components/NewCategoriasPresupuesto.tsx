@@ -10,12 +10,12 @@ export function New__ModelName() {
   const router = useRouter()
   return (
     <CategoriasPresupuestoForm
-      submitText="Create CategoriasPresupuesto"
+      submitText="Crear Categoria Presupuesto"
       schema={CreateCategoriasPresupuestoSchema}
       onSubmit={async (values) => {
         try {
           const categoriasPresupuesto = await createCategoriasPresupuestoMutation(values)
-          router.push(`/categorias-presupuestos/${categoriasPresupuesto.id}`)
+          router.push(`/categorias-presupuestos`)
         } catch (error: any) {
           console.error(error)
           return {

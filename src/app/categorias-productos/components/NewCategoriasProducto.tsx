@@ -10,7 +10,7 @@ export function New__ModelName() {
   const router = useRouter()
   return (
     <CategoriasProductoForm
-      submitText="Create CategoriasProducto"
+      submitText="Crear Categoria de Producto"
       schema={CreateCategoriasProductoSchema}
       onSubmit={async (values) => {
         try {

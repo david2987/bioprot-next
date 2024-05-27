@@ -35,7 +35,7 @@ const SideBar: BlitzPage = () => {
     { nombre: "Medicos", link: "/medics", icon: <LucideUserSearch></LucideUserSearch> },
     { nombre: "Instituciones", link: "/instituciones", icon: <Home></Home> },
     { nombre: "Productos", link: "/productos", icon: <Package></Package> },
-    { nombre: "Categorias Presupuesto", link: "/categoria-presupuestos", icon: <Shapes></Shapes> },
+    { nombre: "Categorias Presupuesto", link: "/categorias-presupuestos", icon: <Shapes></Shapes> },
     { nombre: "Categorias Producto", link: "/categorias-productos", icon: <Box></Box> },
   ]
 

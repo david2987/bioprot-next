@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: CategoriasProductoPageProps):
     id: Number(params.categoriasProductoId),
   })
   return {
-    title: `CategoriasProducto ${CategoriasProducto.id} - ${CategoriasProducto.descripcion}`,
+    title: `CategoriasProducto `,
   }
 }
 
@@ -22,7 +22,7 @@ export default async function Page({ params }: CategoriasProductoPageProps) {
   return (
     <div>
       <p>
-        <Link href={"/categorias-productos"}>CategoriasProductos</Link>
+        <Link href={"/categorias-productos"}>Categoria de Producto</Link>
       </p>
       <Suspense fallback={<div>Loading...</div>}>
         <CategoriasProducto categoriasProductoId={Number(params.categoriasProductoId)} />

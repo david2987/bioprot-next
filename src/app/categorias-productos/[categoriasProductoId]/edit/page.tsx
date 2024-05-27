@@ -15,7 +15,7 @@ export async function generateMetadata({
     id: Number(params.categoriasProductoId),
   })
   return {
-    title: `Edit CategoriasProducto ${CategoriasProducto.id} - ${CategoriasProducto.descripcion}`,
+    title: `Editar Categoria de Producto`,
   }
 }
 

@@ -23,7 +23,9 @@ type CategoriasPresupuestoPageProps = {
 export default async function Page({ params }: CategoriasPresupuestoPageProps) {
   return (
     <div>
-      <p>{/* <Link href={"/categoriasPresupuestos"}>CategoriasPresupuestos</Link> */}</p>
+      <p>
+        <Link href={"/categorias-presupuestos"}>Categoria de Presupuesto</Link>
+      </p>
       <Suspense fallback={<div>Loading...</div>}>
         <CategoriasPresupuesto categoriasPresupuestoId={Number(params.categoriasPresupuestoId)} />
       </Suspense>

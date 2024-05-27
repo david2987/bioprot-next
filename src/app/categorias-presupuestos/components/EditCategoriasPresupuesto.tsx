@@ -25,11 +25,11 @@ export const EditCategoriasPresupuesto = ({
   return (
     <>
       <div>
-        <h1>Edit CategoriasPresupuesto {categoriasPresupuesto.id}</h1>
-        <pre>{JSON.stringify(categoriasPresupuesto, null, 2)}</pre>
+        <div className="text-2xl mb-2 border-b-2 mt-2">Editar Categoria Presupuesto </div>
+
         <Suspense fallback={<div>Loading...</div>}>
           <CategoriasPresupuestoForm
-            submitText="Update CategoriasPresupuesto"
+            submitText="Actualizar Categoria Presupuesto"
             schema={UpdateCategoriasPresupuestoSchema}
             initialValues={categoriasPresupuesto}
             onSubmit={async (values) => {
@@ -40,6 +40,7 @@ export const EditCategoriasPresupuesto = ({
                 })
                 await setQueryData(updated)
                 router.refresh()
+                router.push("/categorias-presupuestos")
               } catch (error: any) {
                 console.error(error)
                 return {
